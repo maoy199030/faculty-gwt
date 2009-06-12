@@ -1,9 +1,8 @@
 package com.hsn.ceturk.hellogwtwithjpa.client.model;
 
-import java.io.Serializable;
 
 
-public class Personel implements Serializable {
+public class Personel implements BaseDemoObject {
 	
 	// don't exchange these fields in RPC calls
 	public transient final String NAMEDQUERY_FIND_PERSONEL_BY_EMAIL = "Personel.findPersonelByEmail";

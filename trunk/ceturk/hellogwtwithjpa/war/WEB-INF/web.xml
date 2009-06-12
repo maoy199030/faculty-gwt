@@ -13,7 +13,7 @@
   <!-- Servlets -->
   <servlet>
     <servlet-name>greetServlet</servlet-name>
-    <servlet-class>com.hsn.ceturk.hellogwtwithjpa.server.GreetingServiceImpl</servlet-class>
+    <servlet-class>com.hsn.ceturk.hellogwtwithjpa.server.service.DemoServiceImpl</servlet-class>
   </servlet>
   
   <servlet-mapping>
