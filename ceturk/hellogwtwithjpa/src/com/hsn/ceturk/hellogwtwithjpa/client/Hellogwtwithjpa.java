@@ -31,8 +31,7 @@ public class Hellogwtwithjpa implements EntryPoint {
 	/**
 	 * Create a remote service proxy to talk to the server-side Greeting service.
 	 */
-	private final GreetingServiceAsync greetingService = GWT
-			.create(GreetingService.class);
+	private final DemoServiceAsync demoService = GWT.create(DemoService.class);
 
 	/**
 	 * This is the entry point method.
@@ -108,7 +107,7 @@ public class Hellogwtwithjpa implements EntryPoint {
 				String textToServer = nameField.getText();
 				textToServerLabel.setText(textToServer);
 				serverResponseLabel.setText("");
-				greetingService.greetServer(textToServer,
+				demoService.greetServer(textToServer,
 						new AsyncCallback<String>() {
 							public void onFailure(Throwable caught) {
 								// Show the RPC error message to the user

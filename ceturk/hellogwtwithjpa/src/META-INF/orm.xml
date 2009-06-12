@@ -10,7 +10,7 @@
         <table name="PERSONEL"/>
         <named-query name="Personel.findPersonelByEmail">
             <query>select p from Personel p 
-                where p.eposta = :email</query>
+                where p.eposta = :eposta</query>
         </named-query>
         
         <attributes>
