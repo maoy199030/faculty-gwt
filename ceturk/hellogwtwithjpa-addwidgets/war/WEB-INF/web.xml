@@ -18,7 +18,7 @@
   
   <servlet-mapping>
     <servlet-name>greetServlet</servlet-name>
-    <url-pattern>/hellogwtwithjpa/greet</url-pattern>
+    <url-pattern>/hellogwtwithjpa/demo</url-pattern>
   </servlet-mapping>
 
 </web-app>
