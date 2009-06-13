@@ -4,17 +4,18 @@ import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.event.dom.client.KeyCodes;
-import com.google.gwt.event.dom.client.KeyUpEvent;
-import com.google.gwt.event.dom.client.KeyUpHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.DecoratedTabPanel;
 import com.google.gwt.user.client.ui.DialogBox;
+import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.RootPanel;
-import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.user.client.ui.FlexTable.FlexCellFormatter;
+import com.hsn.ceturk.hellogwtwithjpa.client.model.Personel;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
@@ -33,108 +34,89 @@ public class Hellogwtwithjpa implements EntryPoint {
 	 */
 	private final DemoServiceAsync demoService = GWT.create(DemoService.class);
 
+	private PersonelGirisFormu form;
+
+	private FlexTable table;
+
+	private DecoratedTabPanel tabPanel;
+
 	/**
 	 * This is the entry point method.
 	 */
 	public void onModuleLoad() {
-		final Button sendButton = new Button("Send");
-		final TextBox nameField = new TextBox();
-		nameField.setText("GWT User");
-
-		// We can add style names to widgets
-		sendButton.addStyleName("sendButton");
-
+		tabPanel = new DecoratedTabPanel();
+		tabPanel.setWidth("400px");
+		tabPanel.setAnimationEnabled(true);
+		tabPanel.add(createPersonelGirisTabContent(), "Yeni Personel");
+		tabPanel.add(createPersonelListesiTabContent(), "Personel Listesi");
+		tabPanel.selectTab(1);
+		
 		// Add the nameField and sendButton to the RootPanel
 		// Use RootPanel.get() to get the entire body element
-		RootPanel.get("nameFieldContainer").add(nameField);
-		RootPanel.get("sendButtonContainer").add(sendButton);
+		RootPanel.get("myFieldContainer").add(tabPanel);
 
-		// Focus the cursor on the name field when the app loads
-		nameField.setFocus(true);
-		nameField.selectAll();
+	}
 
-		// Create the popup dialog box
-		final DialogBox dialogBox = new DialogBox();
-		dialogBox.setText("Remote Procedure Call");
-		dialogBox.setAnimationEnabled(true);
-		final Button closeButton = new Button("Close");
-		// We can set the id of a widget by accessing its Element
-		closeButton.getElement().setId("closeButton");
-		final Label textToServerLabel = new Label();
-		final HTML serverResponseLabel = new HTML();
-		VerticalPanel dialogVPanel = new VerticalPanel();
-		dialogVPanel.addStyleName("dialogVPanel");
-		dialogVPanel.add(new HTML("<b>Sending name to the server:</b>"));
-		dialogVPanel.add(textToServerLabel);
-		dialogVPanel.add(new HTML("<br><b>Server replies:</b>"));
-		dialogVPanel.add(serverResponseLabel);
-		dialogVPanel.setHorizontalAlignment(VerticalPanel.ALIGN_RIGHT);
-		dialogVPanel.add(closeButton);
-		dialogBox.setWidget(dialogVPanel);
+	private Widget createPersonelListesiTabContent() {
+		table = new FlexTable();
+		FlexCellFormatter cellFormatter = table.getFlexCellFormatter();
 
-		// Add a handler to close the DialogBox
-		closeButton.addClickHandler(new ClickHandler() {
-			public void onClick(ClickEvent event) {
-				dialogBox.hide();
-				sendButton.setEnabled(true);
-				sendButton.setFocus(true);
-			}
-		});
+		table.setCellSpacing(5);
+		table.setCellPadding(3);
 
-		// Create a handler for the sendButton and nameField
-		class MyHandler implements ClickHandler, KeyUpHandler {
-			/**
-			 * Fired when the user clicks on the sendButton.
-			 */
-			public void onClick(ClickEvent event) {
-				sendNameToServer();
-			}
+		cellFormatter.setHorizontalAlignment(0, 1, HasHorizontalAlignment.ALIGN_LEFT);
+	    table.setWidget(0, 0, new HTML("<b>Ad</b>"));
+	    table.setWidget(0, 1, new HTML("<b>Soyad</b>"));
+	    table.setWidget(0, 2, new HTML("<b>E-posta</b>"));
 
-			/**
-			 * Fired when the user types in the nameField.
-			 */
-			public void onKeyUp(KeyUpEvent event) {
-				if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
-					sendNameToServer();
+		return table;
+	}
+	
+	private void addRow(Personel personel) {
+	    int numRows = table.getRowCount();
+	    table.setHTML(numRows, 0, personel.getAd());
+	    table.setHTML(numRows, 1, personel.getSoyad());
+	    table.setHTML(numRows, 2, personel.getEposta());
+	  }
+
+
+	private Widget createPersonelGirisTabContent() {
+		VerticalPanel vPanel = new VerticalPanel();
+		form = new PersonelGirisFormu();
+		Button btnKaydet = new Button("Kaydet");
+		btnKaydet.addClickHandler(new KaydetClickHandler());
+		
+		vPanel.add(form);
+		vPanel.add(btnKaydet);
+		return vPanel;
+	}
+	
+	class KaydetClickHandler implements ClickHandler {
+
+		@Override
+		public void onClick(ClickEvent event) {
+			final Personel personel = form.fromViewToModel();
+			demoService.createPersonel(personel, new AsyncCallback<Void>() {
+
+				DialogBox d = new DialogBox(true, true);
+
+				@Override
+				public void onFailure(Throwable caught) {
+					d.setWidget(new HTML("<b><font color=\"red\">Personel kaydedilirken hata oluştu!</font></b>"));
+					d.show();
 				}
-			}
 
-			/**
-			 * Send the name from the nameField to the server and wait for a response.
-			 */
-			private void sendNameToServer() {
-				sendButton.setEnabled(false);
-				String textToServer = nameField.getText();
-				textToServerLabel.setText(textToServer);
-				serverResponseLabel.setText("");
-				demoService.greetServer(textToServer,
-						new AsyncCallback<String>() {
-							public void onFailure(Throwable caught) {
-								// Show the RPC error message to the user
-								dialogBox
-										.setText("Remote Procedure Call - Failure");
-								serverResponseLabel
-										.addStyleName("serverResponseLabelError");
-								serverResponseLabel.setHTML(SERVER_ERROR);
-								dialogBox.center();
-								closeButton.setFocus(true);
-							}
-
-							public void onSuccess(String result) {
-								dialogBox.setText("Remote Procedure Call");
-								serverResponseLabel
-										.removeStyleName("serverResponseLabelError");
-								serverResponseLabel.setHTML(result);
-								dialogBox.center();
-								closeButton.setFocus(true);
-							}
-						});
-			}
+				@Override
+				public void onSuccess(Void result) {
+					d.setWidget(new HTML("<b><font color=\"blue\">Personel başarıyla kaydedildi.</font></b>"));
+					d.show();
+					addRow(personel);
+					form.clear();
+					tabPanel.selectTab(1);
+				}
+				
+			});
 		}
 
-		// Add a handler to send the name to the server
-		MyHandler handler = new MyHandler();
-		sendButton.addClickHandler(handler);
-		nameField.addKeyUpHandler(handler);
 	}
 }
