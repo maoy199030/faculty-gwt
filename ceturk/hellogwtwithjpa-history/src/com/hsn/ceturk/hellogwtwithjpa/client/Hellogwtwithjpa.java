@@ -4,6 +4,11 @@ import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.logical.shared.SelectionEvent;
+import com.google.gwt.event.logical.shared.SelectionHandler;
+import com.google.gwt.event.logical.shared.ValueChangeEvent;
+import com.google.gwt.event.logical.shared.ValueChangeHandler;
+import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DecoratedTabPanel;
@@ -44,12 +49,43 @@ public class Hellogwtwithjpa implements EntryPoint {
 	 * This is the entry point method.
 	 */
 	public void onModuleLoad() {
+		final String TOKEN_NAME = "tabno";
+		final int DEFAULT_TAB = 1;
+		
 		tabPanel = new DecoratedTabPanel();
 		tabPanel.setWidth("400px");
 		tabPanel.setAnimationEnabled(true);
 		tabPanel.add(createPersonelGirisTabContent(), "Yeni Personel");
 		tabPanel.add(createPersonelListesiTabContent(), "Personel Listesi");
-		tabPanel.selectTab(1);
+		
+		tabPanel.addSelectionHandler(new SelectionHandler<Integer>() {
+
+			@Override
+			public void onSelection(SelectionEvent<Integer> event) {
+				History.newItem(TOKEN_NAME + event.getSelectedItem());
+			}
+		});
+		
+		History.addValueChangeHandler(new ValueChangeHandler<String>() {
+
+			@Override
+			public void onValueChange(ValueChangeEvent<String> event) {
+				String historyToken = event.getValue();
+				
+				try {
+					if (historyToken.substring(0, TOKEN_NAME.length()).equals(TOKEN_NAME)) {
+						String tabIndex = historyToken.substring(5,6);
+						tabPanel.selectTab(Integer.valueOf(tabIndex));
+					} else {
+						tabPanel.selectTab(DEFAULT_TAB);
+					}
+				} catch (Exception e) {
+					tabPanel.selectTab(DEFAULT_TAB);
+				}
+			}
+		});
+		
+		tabPanel.selectTab(DEFAULT_TAB);
 		
 		// Add the nameField and sendButton to the RootPanel
 		// Use RootPanel.get() to get the entire body element
