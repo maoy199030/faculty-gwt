@@ -13,7 +13,7 @@
   <!-- Servlets -->
   <servlet>
     <servlet-name>uploadServlet</servlet-name>
-    <servlet-class>com.hsn.ceturk.gwtfileupload.server.GWTFileUploadServiceImpl</servlet-class>
+    <servlet-class>com.hsn.ceturk.gwtfileupload.server.FileUploadServlet</servlet-class>
   </servlet>
   
   <servlet-mapping>
