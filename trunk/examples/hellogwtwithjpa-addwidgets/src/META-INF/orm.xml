@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm
+                 http://java.sun.com/xml/ns/persistence/orm_1_0.xsd"
+                 xmlns="http://java.sun.com/xml/ns/persistence/orm" version="1.0">
+    
+    <package>com.hsn.ceturk.hellogwtwithjpa.client.model</package>
+
+    <entity class="Personel" metadata-complete="true" access="PROPERTY">
+        <table name="PERSONEL"/>
+        <named-query name="Personel.findPersonelByEmail">
+            <query>select p from Personel p 
+                where p.eposta = :eposta</query>
+        </named-query>
+        
+        <attributes>
+            <id name="id">
+                <generated-value strategy="IDENTITY"/>
+            </id>
+            <basic name="ad"/>
+            <basic name="soyad"/>
+            <basic name="eposta"/>
+        </attributes>
+    </entity>
+</entity-mappings>
