@@ -14,5 +14,5 @@
   <!-- Other module inherits                                      -->
 
   <!-- Specify the app entry point class.                         -->
-  <entry-point class='com.hsn.ceturk.gwtfileupload.client.GWTFileUpload'/>
+  <entry-point class='com.hsn.demo.gwtfileupload.client.GWTFileUpload'/>
 </module>

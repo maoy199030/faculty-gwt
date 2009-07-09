@@ -1,4 +1,4 @@
-package com.hsn.ceturk.gwtfileupload.client;
+package com.hsn.demo.gwtfileupload.client;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;

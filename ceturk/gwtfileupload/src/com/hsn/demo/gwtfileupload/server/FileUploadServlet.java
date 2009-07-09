@@ -1,4 +1,4 @@
-package com.hsn.ceturk.gwtfileupload.server;
+package com.hsn.demo.gwtfileupload.server;
 
 import java.io.File;
 import java.io.IOException;
