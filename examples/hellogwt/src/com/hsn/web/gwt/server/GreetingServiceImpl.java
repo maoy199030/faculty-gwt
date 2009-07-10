@@ -1,6 +1,6 @@
-package com.hsn.ceturk.hellogwt.server;
+package com.hsn.web.gwt.server;
 
-import com.hsn.ceturk.hellogwt.client.GreetingService;
+import com.hsn.web.gwt.client.GreetingService;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 /**
