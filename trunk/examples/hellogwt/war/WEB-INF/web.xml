@@ -13,7 +13,7 @@
   <!-- Servlets -->
   <servlet>
     <servlet-name>greetServlet</servlet-name>
-    <servlet-class>com.hsn.ceturk.hellogwt.server.GreetingServiceImpl</servlet-class>
+    <servlet-class>com.hsn.web.gwt.server.GreetingServiceImpl</servlet-class>
   </servlet>
   
   <servlet-mapping>
