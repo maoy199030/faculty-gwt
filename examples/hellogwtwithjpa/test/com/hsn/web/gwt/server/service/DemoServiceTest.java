@@ -1,4 +1,4 @@
-package com.hsn.ceturk.hellogwtwithjpa.server.service;
+package com.hsn.web.gwt.server.service;
 
 
 import org.junit.Assert;
@@ -7,7 +7,7 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.hsn.ceturk.hellogwtwithjpa.client.DemoService;
+import com.hsn.web.gwt.client.DemoService;
 
 /**
  * @author Hasan
