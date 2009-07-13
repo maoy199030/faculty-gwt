@@ -9,7 +9,7 @@
         <provider>
             org.hibernate.ejb.HibernatePersistence
         </provider>
-        <class>com.hsn.ceturk.hellogwtwithjpa.client.model.Personel</class>
+        <class>com.hsn.web.gwt.client.model.Personel</class>
         
         <!-- HSQLDB -->
         <properties>

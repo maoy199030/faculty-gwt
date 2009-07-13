@@ -1,4 +1,4 @@
-package com.hsn.ceturk.hellogwtwithjpa.server.dao;
+package com.hsn.web.gwt.server.dao;
 
 import java.util.List;
 import java.util.Map;
@@ -7,7 +7,7 @@ import java.util.Map.Entry;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import com.hsn.ceturk.hellogwtwithjpa.client.model.BaseDemoObject;
+import com.hsn.web.gwt.client.model.BaseDemoObject;
 
 public abstract class BaseDAOImpl implements BaseDAO {
 
