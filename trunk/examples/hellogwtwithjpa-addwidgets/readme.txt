@@ -1,0 +1,1 @@
+basic GWT-JPA scenario implementation

@@ -1,4 +1,4 @@
-package com.hsn.ceturk.hellogwtwithjpa.server.dao;
+package com.hsn.web.gwt.server.dao;
 
 
 public interface DemoDAO extends BaseDAO {
