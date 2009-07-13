@@ -1,9 +1,9 @@
-package com.hsn.ceturk.hellogwtwithjpa.server.dao;
+package com.hsn.web.gwt.server.dao;
 
 import java.util.List;
 import java.util.Map;
 
-import com.hsn.ceturk.hellogwtwithjpa.client.model.BaseDemoObject;
+import com.hsn.web.gwt.client.model.BaseDemoObject;
 
 public interface BaseDAO {
 	public void persist(BaseDemoObject nesne);

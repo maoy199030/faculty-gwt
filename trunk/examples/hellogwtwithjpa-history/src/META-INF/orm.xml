@@ -4,7 +4,7 @@
                  http://java.sun.com/xml/ns/persistence/orm_1_0.xsd"
                  xmlns="http://java.sun.com/xml/ns/persistence/orm" version="1.0">
     
-    <package>com.hsn.ceturk.hellogwtwithjpa.client.model</package>
+    <package>com.hsn.web.gwt.client.model</package>
 
     <entity class="Personel" metadata-complete="true" access="PROPERTY">
         <table name="PERSONEL"/>

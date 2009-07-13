@@ -1,4 +1,4 @@
-package com.hsn.ceturk.hellogwtwithjpa.client;
+package com.hsn.web.gwt.client;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
@@ -20,7 +20,7 @@ import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.user.client.ui.FlexTable.FlexCellFormatter;
-import com.hsn.ceturk.hellogwtwithjpa.client.model.Personel;
+import com.hsn.web.gwt.client.model.Personel;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.

@@ -1,0 +1,2 @@
+- implementing GWT-JPA integration
+- basic History implementation

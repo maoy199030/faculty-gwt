@@ -1,7 +1,7 @@
-package com.hsn.ceturk.hellogwtwithjpa.client;
+package com.hsn.web.gwt.client;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.hsn.ceturk.hellogwtwithjpa.client.model.Personel;
+import com.hsn.web.gwt.client.model.Personel;
 
 /**
  * The async counterpart of <code>DemoService</code>.
