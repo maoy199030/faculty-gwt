@@ -1,4 +1,4 @@
-package com.hsn.ceturk.hellogwtwithjpa.server.dao;
+package com.hsn.web.gwt.server.dao;
 
 import javax.persistence.EntityManager;
 
