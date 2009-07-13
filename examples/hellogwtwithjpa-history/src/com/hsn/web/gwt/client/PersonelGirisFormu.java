@@ -1,4 +1,4 @@
-package com.hsn.ceturk.hellogwtwithjpa.client;
+package com.hsn.web.gwt.client;
 
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.DecoratorPanel;
@@ -8,7 +8,7 @@ import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.user.client.ui.FlexTable.FlexCellFormatter;
-import com.hsn.ceturk.hellogwtwithjpa.client.model.Personel;
+import com.hsn.web.gwt.client.model.Personel;
 
 public class PersonelGirisFormu extends Composite {
 

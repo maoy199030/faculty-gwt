@@ -1,4 +1,4 @@
-package com.hsn.ceturk.hellogwtwithjpa.client.model;
+package com.hsn.web.gwt.client.model;
 
 import java.io.Serializable;
 

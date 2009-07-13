@@ -1,13 +1,13 @@
-package com.hsn.ceturk.hellogwtwithjpa.server.service;
+package com.hsn.web.gwt.server.service;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
-import com.hsn.ceturk.hellogwtwithjpa.client.DemoService;
-import com.hsn.ceturk.hellogwtwithjpa.client.model.Personel;
-import com.hsn.ceturk.hellogwtwithjpa.server.dao.DemoDAO;
-import com.hsn.ceturk.hellogwtwithjpa.server.dao.DemoDAOImpl;
+import com.hsn.web.gwt.client.DemoService;
+import com.hsn.web.gwt.client.model.Personel;
+import com.hsn.web.gwt.server.dao.DemoDAO;
+import com.hsn.web.gwt.server.dao.DemoDAOImpl;
 
 /**
  * The server side implementation of the RPC service.
