@@ -1,4 +1,4 @@
-package com.hsn.ceturk.hellogwtwithjpa.client;
+package com.hsn.web.gwt.client;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 

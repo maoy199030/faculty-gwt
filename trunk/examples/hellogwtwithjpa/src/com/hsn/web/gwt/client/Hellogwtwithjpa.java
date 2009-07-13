@@ -1,4 +1,4 @@
-package com.hsn.ceturk.hellogwtwithjpa.client;
+package com.hsn.web.gwt.client;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
