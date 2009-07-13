@@ -71,16 +71,16 @@ public class FileUploadServlet extends HttpServlet {
 						resp.getWriter().print("The file was created successfully.");
 						resp.flushBuffer();
 					} else
-						throw new IOException("The file already exists in the repository.");
+						throw new IOException("The file already exists in repository.");
 				}
 			} catch (Exception e) {
 				resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR,
-						"An error occurred while creating the file in the queue : " + e.getMessage());
+						"An error occurred while creating the file : " + e.getMessage());
 			}
 
 		} else {
 			resp.sendError(HttpServletResponse.SC_UNSUPPORTED_MEDIA_TYPE,
-							"Unable to identify the contents of the request made to the servlet.");
+							"Request contents type is not supported by the servlet.");
 		}
 	}
 
