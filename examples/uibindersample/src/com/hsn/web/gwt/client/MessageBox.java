@@ -23,23 +23,15 @@ public class MessageBox extends DialogBox {
 	Label textToServerLabel;
 	
 	@UiField
-	Label serverResponseLabel;
+	ServerResponse serverResponseLabel;
 	
 	public MessageBox() {
 		setText("Remote Procedure Call");
 		setAnimationEnabled(true);
 		
-		VerticalPanel panel = uiBinder.createAndBindUi(this);
-		init(panel);
-		
-		setWidget(panel);
+		setWidget(uiBinder.createAndBindUi(this));
 	}
 
-	private void init(VerticalPanel panel) {
-		panel.addStyleName("dialogVPanel");
-		panel.setHorizontalAlignment(VerticalPanel.ALIGN_RIGHT);
-	}
-	
 	@UiHandler("closeButton")
 	public void onCloseClick(ClickEvent e) {
 		hide();
