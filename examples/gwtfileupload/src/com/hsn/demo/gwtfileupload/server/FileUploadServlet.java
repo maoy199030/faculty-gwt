@@ -23,7 +23,7 @@ import org.apache.commons.io.FilenameUtils;
  */
 public class FileUploadServlet extends HttpServlet {
 
-	private static final String UPLOAD_DIRECTORY = "d:\\uploaded\\";
+	private static final String UPLOAD_DIRECTORY = "c:\\uploaded\\";
 	private static final String DEFAULT_TEMP_DIR = ".";
 
 	@Override
